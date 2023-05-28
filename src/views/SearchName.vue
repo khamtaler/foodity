@@ -8,10 +8,14 @@
       @change="searchMeals"
     />
     <main class="flex flex-col items-center">
-      <div v-if="meals.length !== 0" class="grid grid-cols-1 md:grid-cols-3">
-        <div v-for="meal in meals" :key="meal.idMeal">
+      <div v-if="meals.length !== 0" class="grid grid-cols-1 md:grid-cols-3 p-3">
+        <div v-for="meal in meals" :key="meal.idMeal" class="p-3">
           <RouterLink :to="{ name: 'MealDetails', params: { id: meal.idMeal } }">
-            <img :src="meal.strMealThumb" :alt="meal.strMeal" />
+            <img
+              :src="meal.strMealThumb"
+              :alt="meal.strMeal"
+              class="rounded-t-xl h-[150px] object-cover w-full"
+            />
           </RouterLink>
           <h3>{{ meal.strMeal }}</h3>
           <!-- <p>{{ meal.strIngredient1 }}</p>
