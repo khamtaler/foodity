@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <input type="text" placeholder="search for meals" />
-  </div>
+  <div></div>
 </template>
 
 <script setup></script>
