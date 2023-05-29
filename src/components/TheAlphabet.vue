@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-row items-center h-[80px]">
+  <div class="flex flex-row items-center h-[80px] flex-wrap justify-center px-4">
     <router-link
       v-for="letter in alphabet"
       :to="{ name: 'MealsByLetter', params: { letter } }"
       :key="{ letter }"
-      class="px-1 hover:text-xl hover:px-2 hover:font-bold"
+      class="px-1 sm:hover:text-xl sm:hover:px-2 sm:hover:font-bold"
       @click="$emit('search', letter)"
     >
       {{ letter }}

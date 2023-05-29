@@ -5,12 +5,14 @@
       type="text"
       placeholder="search for meals"
       v-model="search"
+      v-on:keyup.enter="saveWord"
       @change="searchMeals"
     />
     <main class="flex flex-col items-center">
-      <div v-if="meals.length !== 0" class="grid grid-cols-1 md:grid-cols-3 p-3">
-        <BaseMenuItem v-for="meal in meals" :meal="meal" />
+      <div v-if="meals" class="grid grid-cols-1 md:grid-cols-3 p-3 gap-4 lg:w-[1000px] w-full">
+        <BaseDishTile v-for="meal in meals" :meal="meal" />
       </div>
+      <p v-if="!meals">Sorry there is no match for "{{ searchedWord }}" in the database</p>
       <p>{{ meals }}</p>
     </main>
   </div>
@@ -22,11 +24,17 @@ import { computed } from '@vue/reactivity'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import store from '../store'
-import BaseMenuItem from '../components/BaseMenuItem.vue'
+
+import BaseDishTile from '../components/BaseDishTile.vue'
 
 const search = ref('')
 const meals = computed(() => store.state.searchedMeals)
 const route = useRoute()
+const searchedWord = ref('')
+
+function saveWord() {
+  searchedWord.value = search.value
+}
 
 function searchMeals() {
   store.dispatch('searchMeals', search.value)

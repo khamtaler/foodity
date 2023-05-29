@@ -8,9 +8,7 @@
         <router-link :to="{ name: 'MealsByLetter' }" class="p-3">Meals by Letter</router-link>
       </li>
       <li class="inline-flex h-full items-center hover:bg-slate-400">
-        <router-link :to="{ name: 'MealsByIngredient' }" class="p-3"
-          >Meals by ingredients</router-link
-        >
+        <router-link :to="{ name: 'MealsByIngredient' }" class="p-3">Ingredients</router-link>
       </li>
     </ul>
   </div>

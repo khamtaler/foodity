@@ -6,9 +6,6 @@
 </template>
 
 <script setup>
-// import TheSearchBar from '../components/TheSearchBar.vue'
 import { ref } from 'vue'
 const search = ref('')
 </script>
-
-<style lang="scss" scoped></style>
