@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center">
     <input
-      class="py-4 my-4 rounded-lg"
+      class="py-4 my-4 rounded-lg w-[300px]"
       type="text"
       placeholder="search for meals"
       v-model="search"
@@ -9,18 +9,27 @@
     />
     <main class="flex flex-col items-center">
       <div v-if="meals.length !== 0" class="grid grid-cols-1 md:grid-cols-3 p-3">
-        <div v-for="meal in meals" :key="meal.idMeal" class="p-3">
-          <RouterLink :to="{ name: 'MealDetails', params: { id: meal.idMeal } }">
+        <div
+          v-for="meal in meals"
+          :key="meal.idMeal"
+          class="p-3 bg-white m-3 shadow-md rounded-t-xl"
+        >
+          <RouterLink
+            :to="{ name: 'MealDetails', params: { id: meal.idMeal } }"
+            class="overflow-hidden"
+          >
             <img
               :src="meal.strMealThumb"
               :alt="meal.strMeal"
-              class="rounded-t-xl h-[150px] object-cover w-full"
+              class="rounded-t-xl h-[150px] object-cover w-full hover:transform hover:scale-95 ease-in duration-200"
             />
           </RouterLink>
-          <h3>{{ meal.strMeal }}</h3>
+          <h3 class="my-5 font-bold">{{ meal.strMeal }}</h3>
           <!-- <p>{{ meal.strIngredient1 }}</p>
           <p>{{ meal.strInstructions }}</p> -->
-          <a v-if="meal.strYoutube" :href="meal.strYoutube">View Youtube</a>
+          <a v-if="meal.strYoutube" :href="meal.strYoutube" class="hover:text-red-600"
+            >View Youtube</a
+          >
         </div>
       </div>
       <p>{{ meals }}</p>
