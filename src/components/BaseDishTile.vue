@@ -1,5 +1,18 @@
 <template>
-  <div :key="meal.idMeal" class="p-3 bg-white shadow-md rounded-t-xl md:max-w-[300px] w-full">
+  <div
+    :key="meal.idMeal"
+    class="relative p-3 bg-white shadow-md rounded-t-xl md:max-w-[300px] w-full"
+  >
+    <EmptyHeartIcon
+      v-if="!isSaved"
+      class="absolute w-8 right-5 bottom-3 z-10 cursor-pointer"
+      @click="addToFavorites"
+    />
+    <FullHeartIcon
+      v-if="isSaved"
+      class="absolute w-8 right-5 bottom-3 z-10 cursor-pointer"
+      @click="removeFromFavorites"
+    />
     <RouterLink
       v-if="meal.strMealThumb"
       :to="{ name: 'MealDetails', params: { id: meal.idMeal } }"
@@ -25,7 +38,44 @@
   </div>
 </template>
 <script setup>
+import EmptyHeartIcon from './icons/EmptyHeartIcon.vue'
+import FullHeartIcon from './icons/FullHeartIcon.vue'
+import { onBeforeMount, ref } from 'vue'
+const emit = defineEmits(['reload'])
 const props = defineProps({
   meal: Object
+})
+
+const savedRecipes = ref([])
+const isSaved = ref('')
+
+function addToFavorites() {
+  if (localStorage.getItem('savedRecipes')) {
+    savedRecipes.value = JSON.parse(localStorage.getItem('savedRecipes'))
+  }
+  const objectToSave = {
+    id: props.meal.idMeal
+  }
+  savedRecipes.value.reverse().push(objectToSave)
+  localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes.value.reverse()))
+  isSaved.value = true
+}
+
+function removeFromFavorites() {
+  const saved = JSON.parse(localStorage.getItem('savedRecipes'))
+  const updatedList = saved.filter((el) => el.id !== props.meal.idMeal)
+  localStorage.setItem('savedRecipes', JSON.stringify(updatedList))
+  isSaved.value = false
+}
+
+onBeforeMount(() => {
+  const saved = JSON.parse(localStorage.getItem('savedRecipes'))
+  if (saved) {
+    saved.forEach((el) => {
+      if (el.id === props.meal.idMeal) {
+        isSaved.value = true
+      }
+    })
+  }
 })
 </script>
