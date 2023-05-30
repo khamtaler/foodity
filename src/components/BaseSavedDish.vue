@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="isSaved"
     :key="meal.idMeal"
     class="relative p-3 bg-white shadow-md rounded-t-xl md:max-w-[300px] w-full"
   >
@@ -33,7 +34,7 @@
 
     <h3 v-if="meal.strMeal" class="my-5 font-bold">{{ meal.strMeal }}</h3>
     <!-- <p>{{ meal.strIngredient1 }}</p>
-          <p>{{ meal.strInstructions }}</p> -->
+            <p>{{ meal.strInstructions }}</p> -->
     <a v-if="meal.strYoutube" :href="meal.strYoutube" class="hover:text-red-600">View Youtube</a>
   </div>
 </template>
@@ -73,7 +74,7 @@ onBeforeMount(() => {
   console.log(saved)
   if (saved) {
     saved.forEach((el) => {
-      if (el.id === props.meal.idMeal) {
+      if (el.idMeal === props.meal.idMeal) {
         isSaved.value = true
       }
     })

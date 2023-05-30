@@ -1,29 +1,57 @@
 <template>
   <div class="flex flex-col p-5 flex-wrap items-center">
-    <main class="flex flex-col items-center"></main>
+    <main class="flex flex-col items-center w-[90%]">
+      <div
+        v-if="savedMeals.length > 0"
+        class="grid grid-cols-1 md:grid-cols-3 p-3 gap-5 lg:w-[1000px] w-full"
+      >
+        <BaseSavedDish v-for="meal in savedMeals" :meal="meal" />
+      </div>
+    </main>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, onUnmounted } from 'vue'
 import store from '../store'
 
 import axiosClient from '../axiosClient.js'
+import BaseSavedDish from '../components/BaseSavedDish.vue'
 
-const meals = computed(() => {
-  return store.state.meals
-})
+// const meals = computed(() => {
+//   return store.state.meals
+// })
 
-const ingredients = ref([])
+const savedMeals = ref([])
 
 onMounted(async () => {
-  try {
-    const response = await axiosClient.get(`/list.php?i=list`).then((res) => {
-      return res.data
-    })
-    ingredients.value = response
-  } catch (err) {
-    console.log(err)
+  if (localStorage.getItem('savedRecipes')) {
+    savedMeals.value = JSON.parse(localStorage.getItem('savedRecipes'))
   }
+
+  const requests = []
+  savedMeals.value.forEach((el) => {
+    requests.push(axiosClient.get(`lookup.php?i=${el.id}`))
+  })
+
+  const mealsData = await Promise.all(requests)
+
+  mealsData.forEach((item, index) => {
+    savedMeals.value[index] = item.data.meals[0]
+  })
+
+  console.log(savedMeals.value)
+
+  // try {
+  //   const response = await axiosClient.get(`/list.php?i=list`).then((res) => {
+  //     return res.data
+  //   })
+  //   savedMeals.value = response
+  // } catch (err) {
+  //   console.log(err)
+  // }
+})
+onUnmounted(() => {
+  savedMeals.value = []
 })
 </script>
