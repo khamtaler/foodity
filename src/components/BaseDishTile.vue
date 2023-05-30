@@ -38,6 +38,7 @@
   </div>
 </template>
 <script setup>
+import store from '../store'
 import EmptyHeartIcon from './icons/EmptyHeartIcon.vue'
 import FullHeartIcon from './icons/FullHeartIcon.vue'
 import { onBeforeMount, ref } from 'vue'
@@ -49,6 +50,10 @@ const props = defineProps({
 const savedRecipes = ref([])
 const isSaved = ref('')
 
+function addFavorite() {
+  store.commit('saveDish', props.meal.idMeal)
+}
+
 function addToFavorites() {
   if (localStorage.getItem('savedRecipes')) {
     savedRecipes.value = JSON.parse(localStorage.getItem('savedRecipes'))
@@ -58,6 +63,7 @@ function addToFavorites() {
   }
   savedRecipes.value.reverse().push(objectToSave)
   localStorage.setItem('savedRecipes', JSON.stringify(savedRecipes.value.reverse()))
+  addFavorite()
   isSaved.value = true
 }
 

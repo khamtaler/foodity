@@ -7,20 +7,23 @@
       >
         <BaseSavedDish v-for="meal in savedMeals" :meal="meal" />
       </div>
+      <div v-if="!meals">
+        <h3>You haven't added any dish to your favorites list yet</h3>
+      </div>
     </main>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref, onUnmounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import store from '../store'
 
 import axiosClient from '../axiosClient.js'
 import BaseSavedDish from '../components/BaseSavedDish.vue'
 
-// const meals = computed(() => {
-//   return store.state.meals
-// })
+const meals = computed(() => {
+  return store.state.savedDishes.length > 0 ? true : false
+})
 
 const savedMeals = ref([])
 
@@ -50,8 +53,5 @@ onMounted(async () => {
   // } catch (err) {
   //   console.log(err)
   // }
-})
-onUnmounted(() => {
-  savedMeals.value = []
 })
 </script>

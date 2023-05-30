@@ -39,16 +39,21 @@
   </div>
 </template>
 <script setup>
+import store from '../store'
 import EmptyHeartIcon from './icons/EmptyHeartIcon.vue'
 import FullHeartIcon from './icons/FullHeartIcon.vue'
 import { onBeforeMount, ref } from 'vue'
-
 const props = defineProps({
   meal: Object
 })
 
 const savedRecipes = ref([])
 const isSaved = ref('')
+
+function deleteFavorite() {
+  store.commit('deleteDish', props.meal.idMeal)
+  console.log('deltee')
+}
 
 function addToFavorites() {
   if (localStorage.getItem('savedRecipes')) {
@@ -66,12 +71,13 @@ function removeFromFavorites() {
   const saved = JSON.parse(localStorage.getItem('savedRecipes'))
   const updatedList = saved.filter((el) => el.id !== props.meal.idMeal)
   localStorage.setItem('savedRecipes', JSON.stringify(updatedList))
+  deleteFavorite()
   isSaved.value = false
 }
 
 onBeforeMount(() => {
   const saved = JSON.parse(localStorage.getItem('savedRecipes'))
-  console.log(saved)
+
   if (saved) {
     saved.forEach((el) => {
       if (el.idMeal === props.meal.idMeal) {
