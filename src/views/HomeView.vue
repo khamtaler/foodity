@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-col p-5 flex-wrap items-center">
     <main class="flex flex-col items-center"></main>
-    <!-- <pre>{{ ingredients }}</pre> -->
   </div>
 </template>
 

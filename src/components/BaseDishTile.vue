@@ -6,7 +6,6 @@
       class="overflow-hidden"
     >
       <img
-        v-if="meal.strMealThumb"
         :src="meal.strMealThumb"
         :alt="meal.strMeal"
         class="rounded-t-xl h-[200px] md:h-[150px] object-cover w-full hover:transform hover:scale-95 ease-in duration-200"

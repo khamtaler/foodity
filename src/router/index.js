@@ -5,6 +5,7 @@ import SearchLetter from '../views/SearchLetter.vue'
 import SearchIngredient from '../views/SearchIngredient.vue'
 import SearchName from '../views/SearchName.vue'
 import MealDetails from '../views/MealDetails.vue'
+import SearchMealsByIngredient from '../views/SearchMealsByIngredient.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -24,9 +25,14 @@ const router = createRouter({
       component: SearchName
     },
     {
-      path: '/meals-by-ingredient/:ingredient?',
-      name: 'MealsByIngredient',
+      path: '/ingredients/',
+      name: 'Ingredients',
       component: SearchIngredient
+    },
+    {
+      path: '/ingredients/:ingredient',
+      name: 'MealsByIngredient',
+      component: SearchMealsByIngredient
     },
     {
       path: '/meal-details/:id?',
