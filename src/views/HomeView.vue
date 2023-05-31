@@ -42,16 +42,5 @@ onMounted(async () => {
   mealsData.forEach((item, index) => {
     savedMeals.value[index] = item.data.meals[0]
   })
-
-  console.log(savedMeals.value)
-
-  // try {
-  //   const response = await axiosClient.get(`/list.php?i=list`).then((res) => {
-  //     return res.data
-  //   })
-  //   savedMeals.value = response
-  // } catch (err) {
-  //   console.log(err)
-  // }
 })
 </script>

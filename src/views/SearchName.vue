@@ -13,7 +13,6 @@
         <BaseDishTile v-for="meal in meals" :meal="meal" />
       </div>
       <p v-if="!meals">Sorry there is no match for "{{ searchedWord }}" in the database</p>
-      <p>{{ meals }}</p>
     </main>
   </div>
 </template>
@@ -24,6 +23,7 @@ import { computed } from '@vue/reactivity'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import store from '../store'
+import router from '../router'
 
 import BaseDishTile from '../components/BaseDishTile.vue'
 
@@ -34,6 +34,7 @@ const searchedWord = ref('')
 
 function saveWord() {
   searchedWord.value = search.value
+  router.push({ params: { name: search.value } })
 }
 
 function searchMeals() {

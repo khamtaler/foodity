@@ -25,7 +25,6 @@ onMounted(async () => {
       return res.data
     })
     ingredients.value = response.meals
-    console.log(response)
   } catch (err) {
     console.log(err)
   }

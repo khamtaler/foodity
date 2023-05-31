@@ -22,7 +22,6 @@ onMounted(async () => {
         return res.data
       })
     meals.value = response.meals
-    console.log(response)
   } catch (err) {
     console.log(err)
   }
