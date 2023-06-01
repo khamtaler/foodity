@@ -18,13 +18,11 @@
 </template>
 
 <script setup>
-// import TheSearchBar from '../components/TheSearchBar.vue'
 import { computed } from '@vue/reactivity'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import store from '../store'
 import router from '../router'
-
 import BaseDishTile from '../components/BaseDishTile.vue'
 
 const search = ref('')

@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col items-center">
-    <!-- <input class="py-4" type="text" placeholder="search for meals" v-model="search" /> -->
     <main class="flex flex-col items-center">
       <div
         v-if="ingredients"

@@ -11,6 +11,7 @@ import { ref, onMounted } from 'vue'
 import axiosClient from '../axiosClient'
 import { useRoute } from 'vue-router'
 import BaseDishTile from '../components/BaseDishTile.vue'
+
 const meals = ref([])
 const route = useRoute()
 

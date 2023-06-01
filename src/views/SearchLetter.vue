@@ -5,7 +5,7 @@
       <div v-if="meals" class="grid grid-cols-1 md:grid-cols-3 p-3 gap-5 lg:w-[1000px] w-full">
         <BaseDishTile v-for="meal in meals" :meal="meal" />
       </div>
-      <p v-if="!meals">Sorry there are no dishes starting with this letter yet</p>
+      <p v-if="!meals && meals !== ''">Sorry there are no dishes starting with this letter yet</p>
     </main>
   </div>
 </template>
