@@ -36,6 +36,7 @@ onMounted(async () => {
   })
 
   const mealsData = await Promise.all(requests)
+
   store.commit('setCounter', mealsData.length)
   mealsData.forEach((item, index) => {
     savedMeals.value[index] = item.data.meals[0]

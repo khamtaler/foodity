@@ -63,9 +63,13 @@ import axiosClient from '../axiosClient'
 
 const meal = ref({})
 const route = useRoute()
-onMounted(() => {
-  axiosClient.get(`lookup.php?i=${route.params.id}`).then(({ data }) => {
-    meal.value = data.meals[0]
-  })
+onMounted(async () => {
+  try {
+    axiosClient.get(`lookup.php?i=${route.params.id}`).then(({ data }) => {
+      meal.value = data.meals[0]
+    })
+  } catch (err) {
+    console.log(err)
+  }
 })
 </script>
