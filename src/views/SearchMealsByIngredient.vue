@@ -1,6 +1,6 @@
 <template>
   <main class="flex flex-col items-center w-[90%] mx-auto">
-    <div v-if="meals" class="grid grid-cols-1 md:grid-cols-3 p-3 gap-5 lg:w-[1000px] w-full">
+    <div v-if="meals" class="grid grid-cols-1 md:grid-cols-3 p-3 gap-5 lg:w-[1000px] w-full mt-5">
       <BaseDishTile v-for="meal in meals" :meal="meal" />
     </div>
   </main>

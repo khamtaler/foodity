@@ -4,7 +4,7 @@
     <main class="flex flex-col items-center">
       <div
         v-if="ingredients"
-        class="grid grid-cols-2 md:grid-cols-8 p-3 gap-5 lg:w-[1000px] w-full"
+        class="grid grid-cols-2 md:grid-cols-8 p-3 gap-5 lg:w-[1000px] w-full mt-5"
       >
         <BaseIngredientTile v-for="ingredient in ingredients" :ingredient="ingredient" />
       </div>

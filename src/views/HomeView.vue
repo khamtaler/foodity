@@ -17,14 +17,12 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import store from '../store'
-
 import axiosClient from '../axiosClient.js'
 import BaseSavedDish from '../components/BaseSavedDish.vue'
 
 const meals = computed(() => {
   return store.state.savedDishesCount
 })
-
 const savedMeals = ref([])
 
 onMounted(async () => {

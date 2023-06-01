@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ListOfMeals from '../views/ListOfMeals.vue'
 import SearchLetter from '../views/SearchLetter.vue'
 import SearchIngredient from '../views/SearchIngredient.vue'
 import SearchName from '../views/SearchName.vue'

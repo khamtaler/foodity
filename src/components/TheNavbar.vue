@@ -1,21 +1,13 @@
 <template>
   <div>
-    <ul class="flex flex-row h-full">
-      <li class="inline-flex h-full items-center hover:bg-slate-400">
-        <router-link :to="{ name: 'MealsByName' }" class="p-3">Search meals</router-link>
-      </li>
-      <li class="inline-flex h-full items-center hover:bg-slate-400">
-        <router-link :to="{ name: 'MealsByLetter' }" class="p-3">Meals by Letter</router-link>
-      </li>
-      <li class="inline-flex h-full items-center hover:bg-slate-400">
-        <router-link :to="{ name: 'Ingredients' }" class="p-3">Ingredients</router-link>
-      </li>
+    <ul class="flex sm:flex-row h-full flex-col">
+      <base-navbar-item name="MealsByName" title="Search name" />
+      <base-navbar-item name="MealsByLetter" title="Meals by Letter" />
+      <base-navbar-item name="Ingredients" title="Ingredients" />
     </ul>
   </div>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
+import BaseNavbarItem from './BaseNavbarItem.vue'
 </script>
-
-<style lang="scss" scoped></style>
