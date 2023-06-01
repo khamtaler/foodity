@@ -46,7 +46,10 @@
       >
         <ArrowUp class="w-5" /> Hide Tags</span
       >
-      <div v-if="showTags" class="mt-3 mb-5 inline-flex gap-2 flex-wrap border-b-2 border-red-600">
+      <div
+        v-if="showTags"
+        class="mt-3 mb-5 flex gap-2 flex-wrap justify-center border-b-2 border-red-600"
+      >
         <span v-for="tag in meal.strTags.split(',')" class="mb-3"> {{ tag }}</span>
       </div>
     </div>

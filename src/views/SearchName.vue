@@ -8,7 +8,7 @@
       v-on:keyup.enter="saveWord"
       @change="searchMeals"
     />
-    <main class="flex flex-col items-center">
+    <main class="flex flex-col items-center w-[90%] mx-auto">
       <div v-if="meals" class="grid grid-cols-1 md:grid-cols-3 p-3 gap-4 lg:w-[1000px] w-full">
         <BaseDishTile v-for="meal in meals" :meal="meal" />
       </div>

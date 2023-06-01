@@ -14,11 +14,9 @@
         <p v-if="meal.strArea">
           Origin: <span class="font-bold">{{ meal.strArea }}</span>
         </p>
-        <div v-if="meal.strTags" class="flex flex-wrap flex-col">
-          <p>
-            tags:
-            <span v-for="tag in meal.strTags.split(',')" class="mb-3 px-1"> {{ tag }} </span>
-          </p>
+        <div v-if="meal.strTags" class="flex flex-wrap items-center justify-center">
+          <span class="w-full">tags:</span>
+          <span v-for="tag in meal.strTags.split(',')" class="mb-3 px-1"> {{ tag }} </span>
         </div>
         <div v-if="meal.strYoutube" class="flex">
           <a
