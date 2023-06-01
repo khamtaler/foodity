@@ -52,7 +52,7 @@ const isSaved = ref('')
 
 function deleteFavorite() {
   store.commit('deleteDish', props.meal.idMeal)
-  console.log('deltee')
+
 }
 
 function addToFavorites() {

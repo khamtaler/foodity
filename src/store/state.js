@@ -1,5 +1,6 @@
 export default {
   searchedMeals: [],
   searchedLetter: '',
-  savedDishes: []
+  savedDishes: [],
+  savedDishesCount: 0
 }

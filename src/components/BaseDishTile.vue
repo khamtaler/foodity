@@ -118,7 +118,7 @@ function removeFromFavorites() {
 
 onBeforeMount(() => {
   const saved = JSON.parse(localStorage.getItem('savedRecipes'))
-  console.log(saved)
+
   if (saved) {
     saved.forEach((el) => {
       if (el.id === props.meal.idMeal) {
